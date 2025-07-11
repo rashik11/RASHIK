@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Rashik S. - Certified Ethical Hacker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6',
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .bg-cyber {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 47% 33%, rgba(59, 130, 246, 0.15) 0, transparent 59%), 
+                radial-gradient(at 82% 65%, rgba(29, 78, 216, 0.12) 0, transparent 55%);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #1e40af;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold text-secondary">
+                    <span class="text-accent">{</span>SMDRK<span class="text-accent">}</span>
+                </span>
+                <span class="ml-2 text-lg font-semibold hidden sm:block">MOHAMED RASHIK S.</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active text-gray-800 hover:text-accent">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-accent">About</a>
+                <a href="#education" class="nav-link text-gray-800 hover:text-accent">Education</a>
+                <a href="#skills" class="nav-link text-gray-800 hover:text-accent">Skills</a>
+                <a href="#Certifications" class="nav-link text-gray-800 hover:text-accent">Certifications</a>
+                <a href="#contact" class="nav-link text-gray-800 hover:text-accent">Contact</a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-6 py-3 flex flex-col space-y-4">
+                <a href="#home" class="text-gray-800 hover:text-accent py-2">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-accent py-2">About</a>
+                <a href="#education" class="text-gray-800 hover:text-accent py-2">Education</a>
+                <a href="#skills" class="text-gray-800 hover:text-accent py-2">Skills</a>
+                <a href="#Certifications" class="text-gray-800 hover:text-accent py-2">Certifications</a>
+                <a href="#contact" class="text-gray-800 hover:text-accent py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-cyber min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                       MOHAMED RASHIK
+                        <span class="block text-accent mt-2">CEH (Master)</span>
+                    </h1>
+                    <p class="text-gray-300 mt-6 text-lg md:text-xl max-w-2xl text-justify leading-relaxed mx-auto"
+   style="text-justify: inter-word; hyphens: auto;">
+  Aspiring Cybersecurity Analyst & SOC Analyst & Penetration Tester | CEH Master Certified (ANSI & Practical) | Purple Team Mindset (Offense + Defense).
+</p>
+
+
+
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="#contact" class="bg-accent hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition duration-300 flex items-center">
+                            <i class="fas fa-envelope mr-2"></i> Contact Me
+                        </a>
+                        <a href="#about" class="bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-white font-medium py-3 px-6 rounded-lg transition duration-300 flex items-center">
+                            <i class="fas fa-user mr-2"></i> About Me
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-violet-500 to-blue-700 flex items-center justify-center shadow-lg overflow-hidden">
+  <img src="https://raw.githubusercontent.com/rashik11/RASHIK/main/openart-324c62a2-d7c2-417f-8bab-bf8ce879dfc4__1__upscaled-removebg-preview.png" alt="Profile Photo" class="w-full h-full object-contain scale-85" />
+
+</div>
+                        <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-sm font-medium">Available or opportunities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white section-fade">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-inner">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <h3 class="ml-4 text-xl font-semibold">Profile Summary</h3>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed"
+   style="text-align: justify; text-justify: inter-word; word-spacing: normal; max-width: 800px; margin: auto; font-size: 1rem; line-height: 1.8; hyphens: auto;">
+  Aspiring Cybersecurity Analyst with a B.Tech in Information Technology and a Master Certification in Cybersecurity from Simplilearn, including CEH Master credentials. Demonstrated hands-on skills in threat detection, vulnerability assessment, and incident response through TryHackMe labs and real-world simulation platforms. Eager to contribute to securing  IT infrastructure by leveraging my technical knowledge, practical certifications, and strong passion for both defensive and offensive security.
+</p>
+
+                    
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-lg mb-3 flex items-center">
+                                <i class="fas fa-map-marker-alt text-accent mr-2"></i> Location
+                            </h4>
+                            <p class="text-gray-700">Karaikudi, Tamil Nadu, India</p>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="font-semibold text-lg mb-3 flex items-center">
+                                <i class="fas fa-language text-accent mr-2"></i> Languages
+                            </h4>
+                            <p class="text-gray-700">English (Fluent), Tamil (Native)</p>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h4 class="font-semibold text-lg mb-3 flex items-center">
+                                <i class="fas fa-heart text-accent mr-2"></i> Hobbies
+                            </h4>
+                            <p class="text-gray-700 text-justify leading-relaxed max-w-2xl mx-auto mt-6 text-base md:text-lg"
+   style="text-justify: inter-word; word-spacing: normal; hyphens: auto;">
+  Exploring open-source security tools, Tech blogging and cyber awareness education, Staying updated with new technology and cybersecurity trends, Reading and reflecting on the Quran.
+</p>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-10">
+                    <h3 class="text-2xl font-semibold mb-6">Professional Interests</h3>
+                    
+                    <div class="card bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500 min-h-[220px]">
+  <div class="flex items-center gap-3 text-blue-500 mb-4">
+    <i class="fas fa-shield-virus text-3xl"></i>
+    <h4 class="text-xl font-semibold text-gray-800">Cybersecurity</h4>
+  </div>
+  <p class="text-gray-600 text-justify leading-relaxed"
+     style="text-justify: inter-word; word-spacing: normal; hyphens: auto;">
+    Passionate about defending digital environments by identifying vulnerabilities, monitoring threat activity, and applying best practices in cybersecurity. Dedicated to helping organizations strengthen their security posture through both offensive and defensive strategies.
+  </p>
+</div>
+
+
+                        
+                        <div class="card bg-white p-6 rounded-lg shadow-md border-l-4 border-indigo-500">
+  <div class="text-indigo-500 mb-4">
+    <i class="fas fa-network-wired text-3xl"></i>
+  </div>
+  <h4 class="text-xl font-semibold mb-2">
+    Security Operations Center (SOC) Monitoring & Threat Detection
+  </h4>
+  <p class="text-gray-600 text-justify leading-relaxed"
+     style="text-justify: inter-word; word-spacing: normal; hyphens: auto;">
+    Real-time monitoring and analysis of security events to detect threats and anomalies using SIEM tools like Splunk, Elastic, and Wazuh. Supports incident response, alerting, and threat intelligence integration for proactive defense.
+  </p>
+</div>
+
+                        
+                        <div class="card bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500">
+  <!-- Icon + Heading Aligned Horizontally -->
+  <div class="flex items-center gap-3 text-purple-500 mb-4">
+    <i class="fas fa-user-secret text-3xl"></i>
+    <h4 class="text-xl font-semibold text-gray-800">Ethical Hacking</h4>
+  </div>
+
+  <!-- Justified Paragraph -->
+  <p class="text-gray-600 text-justify leading-relaxed"
+     style="text-justify: inter-word; word-spacing: normal; hyphens: auto;">
+    Identifying and exploiting vulnerabilities in systems to assess security risks, using ethical methods to strengthen defenses before malicious actors can act.
+  </p>
+</div>
+
+                        <div class="card bg-white p-6 rounded-lg shadow-md border-l-4 border-teal-500">
+  <!-- Icon + Heading in a Row -->
+  <div class="flex items-center gap-3 text-teal-500 mb-4">
+    <i class="fas fa-server text-3xl"></i>
+    <h4 class="text-xl font-semibold text-gray-800">IT Administration</h4>
+  </div>
+
+  <!-- Justified Paragraph -->
+  <p class="text-gray-600 text-justify leading-relaxed"
+     style="text-justify: inter-word; word-spacing: normal; hyphens: auto;">
+    Passionate about managing and securing IT infrastructure, ensuring system reliability, user access control, and protection from threats. Dedicated to identifying vulnerabilities, optimizing network performance, and supporting both operational stability and cybersecurity resilience.
+  </p>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-50 section-fade">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Education</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Bachelor's Degree -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-primary p-4 text-white">
+                            <h3 class="text-xl font-semibold">Bachelor's Degree</h3>
+                            <p class="text-blue-200">2019 - 2023</p>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-semibold text-lg">B.Tech in Information Technology</h4>
+                            <p class="text-gray-600 mt-1">Hindusthan Institute of Technology, Coimbatore</p>
+                            <div class="mt-4 flex items-center">
+                                <i class="fas fa-graduation-cap text-accent mr-2"></i>
+                                <span class="font-medium">CGPA: 8.54</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Higher Secondary -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-primary p-4 text-white">
+                            <h3 class="text-xl font-semibold">Higher Secondary</h3>
+                            <p class="text-blue-200">2018 - 2019</p>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-semibold text-lg">HSC</h4>
+                            <p class="text-gray-600 mt-1">Kamban Karpakam Matric Higher Secondary School Karaikudi, Tamil Nadu</p>
+                            <div class="mt-4 flex items-center">
+                                <i class="fas fa-award text-accent mr-2"></i>
+                                <span class="font-medium">Percentage: 58%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secondary School -->
+                    <div class="card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="bg-primary p-4 text-white">
+                            <h3 class="text-xl font-semibold">Secondary School</h3>
+                            <p class="text-blue-200">2016 - 2017</p>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-semibold text-lg">SSLC</h4>
+                            <p class="text-gray-600 mt-1">Kamban Karpakam Matric Higher Secondary School Karaikudi, Tamil Nadu</p>
+                            <div class="mt-4 flex items-center">
+                                <i class="fas fa-award text-accent mr-2"></i>
+                                <span class="font-medium">Percentage: 78%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 section-fade">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Skills & Expertise</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Technical Skills</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Ethical Hacking</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Penetration Testing</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">IT Support</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Network Security</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">SIEM (Security Information and Event Management)</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Soft Skills</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-5 rounded-lg shadow-md flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Communication</h4>
+                                <p class="text-sm text-gray-600 mt-1">Effective verbal and written communication skills</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-lg shadow-md flex items-start">
+                            <div class="bg-green-100 p-3 rounded-full text-green-600">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Team Collaboration</h4>
+                                <p class="text-sm text-gray-600 mt-1">Working effectively in diverse teams</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-lg shadow-md flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full text-purple-600">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Problem Solving</h4>
+                                <p class="text-sm text-gray-600 mt-1">Analytical approach to complex challenges</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-5 rounded-lg shadow-md flex items-start">
+                            <div class="bg-yellow-100 p-3 rounded-full text-yellow-600">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Time Management</h4>
+                                <p class="text-sm text-gray-600 mt-1">Efficient prioritization of tasks</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+    </section>
+
+    <!-- Experience Section -->
+    <section id="Certifications" class="py-20 bg-white section-fade">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Certifications</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 mt-10">
+  <img src="https://raw.githubusercontent.com/rashik11/RASHIK/main/CEHMASTER_5FB43496785F.png" alt="CEH Badge 1" class="w-32 h-32 rounded-lg shadow-md" />
+  <img src="https://raw.githubusercontent.com/rashik11/RASHIK/main/CEHPRACTICAL_5FB43496785F.png" alt="CEH Badge 2" class="w-32 h-32 rounded-lg shadow-md" />
+  <img src="https://raw.githubusercontent.com/rashik11/RASHIK/main/CEH_2E345519D3F7.png" alt="CEH Badge 3" class="w-32 h-32 rounded-lg shadow-md" />
+</div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <ul class="space-y-4">
+                                <li class="flex items-center">
+                                
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1fJ67GQkIao2KTt7F-KSBxVWWRxVJICHA" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+    Master Certified Ethical Hacker (ANSI / PRACTICAL)  (Ec-council)
+  </a>
+</li>
+            <div class="mt-10">
+                            <ul class="space-y-4">
+                                <li class="flex items-center">
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1Qd0Mzo0pM26JmGLNvJKwm2jeBXKGCuTa" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+    Master Program Cybersecurity Expert, Learning Certificate for CompTIA SEC+, CompTIA Net+, CISSP (Simplilearn)
+  </a>
+</li>
+
+                                <div class="mt-10">
+                            <ul class="space-y-4">
+                                <li class="flex items-center">
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1a3Ra9RdxdHsMr7uSuNk9Gt7jC6qT-Gt0" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+    Junior Penetration Tester, Soc Analyst Lvl 1, Web Application Pentesting (TryHackMe)
+  </a>
+</li>
+                                <li class="flex items-center">
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1sbU-Wh4BUYZAOFWfrsHIpx6upMyOdNGR" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+    Mastering Cybersecurity Tools (CodeRed-Eccouncil)
+  </a>
+</li>
+                                <li class="flex items-center">
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1t_yfl1BAOGFdzqL2vX_YF2_Jci5MvB_-" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+    AI in Cybersecurity (CodeRed-Eccouncil)
+  </a>
+</li>
+                                <li class="flex items-center">
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1TFcqAVlpKkULYcoOXQtpM6yfqU68dBrx" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+    Internships & Workshop 
+  </a>
+</li>
+                                <li class="flex items-center">
+  <i class="fas fa-certificate text-accent mr-3"></i>
+  <a href="https://drive.google.com/drive/folders/1EGbJvaE2tlbLz8Iqixf_pgm4GU209qVy" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="text-blue-600 hover:underline">
+   Scripting Language 
+  </a>
+</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white section-fade">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800">Get In Touch</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-600 mt-4 max-w-lg mx-auto">Feel free to reach out for opportunities, collaborations, or just to say hello!</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full p-3 text-white">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Phone</h4>
+                                    <p class="text-gray-600 mt-1">+91 6385209751</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full p-3 text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600 mt-1">rnsamdrk786@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full p-3 text-white">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">LinkedIn</h4>
+                                    <a href="https://www.linkedin.com/in/mdrashik/" target="_blank" class="text-accent hover:underline mt-1 block">https://www.linkedin.com/in/mdrashik/</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-accent rounded-full p-3 text-white">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800">Location</h4>
+                                    <p class="text-gray-600 mt-1">Karaikudi, Tamil Nadu, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full max-w-xl">
+        <div class="md:w-full"> <!--
+                IMPORTANT:
+                1. Your Formspree endpoint URL is now embedded.
+                2. Ensure all input fields have a 'name' attribute for Formspree to capture them.
+            -->
+            <form id="contact-form" action="https://formspree.io/f/xvgrevpy" method="POST" class="bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800">Send Me a Message</h3>
+
+                <div class="mb-6">
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your name" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                    <input type="email" id="email" name="_replyto" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your email" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Subject" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your message" required></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                    Send Message
+                </button>
+
+                <div id="form-message" class="mt-4 text-center"></div>
+            </form>
+        </div>
+    </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   
+  <footer class="bg-blue-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <div>
+        <div class="text-lg font-bold">Mohamed Rashik S.</div>
+        <p class="text-blue-300">Certified Ethical Hacker</p>
+      </div>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="mailto:rnsamdrk786@gmail.com" class="hover:text-blue-300"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/mdrashik/" target="_blank" class="hover:text-blue-300"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/rashik11" target="_blank" class="hover:text-blue-300"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+    <p class="text-center text-blue-300 mt-4 text-sm">&copy; 2025 Mohamed Rashik S. All rights reserved.</p>
+  </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Section fade-in animation
+        const fadeElements = document.querySelectorAll('.section-fade');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+        
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        
+        contactForm.addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent default browser submission
+
+            const formData = new FormData(contactForm);
+            // Display a "sending..." message (optional)
+            formMessage.textContent = 'Sending...';
+            formMessage.className = 'mt-4 text-center text-gray-600'; // Reset classes
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Important for Formspree to return JSON
+                    }
+                });
+
+                if (response.ok) {
+                    // Successful submission
+                    formMessage.textContent = 'Message sent successfully! Thanks for reaching out.';
+                    formMessage.className = 'mt-4 text-center form-success';
+                    contactForm.reset(); // Clear the form fields
+                } else {
+                    // Error in submission (e.g., Formspree error, network issue)
+                    const responseData = await response.json();
+                    if (responseData.errors && responseData.errors.length > 0) {
+                        // Display specific errors from Formspree if available
+                        formMessage.textContent = responseData.errors.map(error => error.message).join(', ');
+                    } else {
+                        formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                    }
+                    formMessage.className = 'mt-4 text-center form-error';
+                }
+            } catch (error) {
+                // Network error or other issues with the fetch request
+                console.error('Form submission error:', error);
+                formMessage.textContent = 'An error occurred. Please check your connection and try again.';
+                formMessage.className = 'mt-4 text-center form-error';
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9432b2d3f64bcdd9',t:'MTc0NzgxNjA4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
